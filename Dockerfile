@@ -1,6 +1,6 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER Dominic Böttger "http://inspirationlabs.com"
-RUN cat /proc/mounts > /etc/mtab
+#RUN cat /proc/mounts > /etc/mtab
 
 # set user
 ENV MYSQL_USER mysql
@@ -10,16 +10,17 @@ ENV DATADIR /var/lib/mysql
 # Make apt and MariaDB happy with the docker environment
 RUN echo "#!/bin/sh\nexit 101" >/usr/sbin/policy-rc.d
 RUN chmod +x /usr/sbin/policy-rc.d
-RUN cat /proc/mounts > /etc/mtab
+#RUN cat /proc/mounts > /etc/mtab
 
 # set installation parameters to prevent the installation script from asking
-RUN echo "mariadb-server-5.5 mysql-server/root_password password $MYSQL_ROOT_PW" | debconf-set-selections
-RUN echo "mariadb-server-5.5 mysql-server/root_password_again password $MYSQL_ROOT_PW" | debconf-set-selections
+RUN echo "mariadb-server-10.0 mysql-server/root_password password $MYSQL_ROOT_PW" | debconf-set-selections
+RUN echo "mariadb-server-10.0 mysql-server/root_password_again password $MYSQL_ROOT_PW" | debconf-set-selections
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
-RUN apt-get -y install wget python-software-properties
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse" > /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get -y install wget python-software-properties software-properties-common
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-RUN add-apt-repository 'deb http://mirror2.hs-esslingen.de/mariadb/repo/5.5/ubuntu precise main'
+RUN add-apt-repository 'deb http://ftp.nluug.nl/db/mariadb/repo/10.0/ubuntu trusty main'
 RUN apt-get update
 
 ADD dpkg_selection.conf /tmp/dpkg_selection.conf
