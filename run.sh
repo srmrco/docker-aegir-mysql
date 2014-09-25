@@ -69,6 +69,7 @@ else
 
 	adduser --system --group --home /var/aegir aegir
 	adduser aegir www-data    #make aegir a user of group www-data
+	chsh aegir -s /bin/bash
 
 	chown -R www-data:www-data /var/log/apache2
 	chown -R aegir:www-data /var/aegir
