@@ -89,6 +89,8 @@ else
 	su -s /bin/sh aegir -c "sh /aegir_install.sh"
 
 	touch /root/installed
+
+	# Stop apache, supervisor will start it later and keep it running.
 	apache2ctl stop
 
 	mkdir /var/aegir/drush
@@ -98,6 +100,8 @@ else
 	chown aegir:aegir /var/aegir/hosting_queued.sh
 	chmod 700 /var/aegir/hosting_queued.sh
 fi
+
+# Stop mariadb, supervisor will start it later and keep it running.
 mysqladmin -p$MYSQL_ROOT_PW shutdown
 #DPKG_DEBUG=developer apt-get -y install aegir2
 echo "Starting supervisor:"
