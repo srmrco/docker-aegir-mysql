@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Config default, customize in config-include.sh:
-export POSTFIX_MAILNAME=aegir01.mydomain.com
-export POSTFIX_DESTINATION=aegir01.mydomain.com
 export AEGIR_SITE=aegir01
 export AEGIR_FRONTEND_URL=aegir01.mydomain.com
 export AEGIR_EMAIL=aegir01@mydomain.com
@@ -26,8 +24,6 @@ docker run \
   -v /var/docker/aegir01/var/lib/mysql:/var/lib/mysql \
   -v /var/docker/aegir01/etc/mysql/conf.d:/etc/mysql/conf.d \
   -v /var/docker/aegir01/var/log/mysql:/var/log/mysql \
-  -e POSTFIX_MAILNAME=$POSTFIX_MAILNAME \
-  -e POSTFIX_DESTINATION=$POSTFIX_DESTINATION \
   -e AEGIR_SITE=$AEGIR_SITE \
   -e AEGIR_FRONTEND_URL=$AEGIR_FRONTEND_URL \
   -e AEGIR_EMAIL=$AEGIR_EMAIL \

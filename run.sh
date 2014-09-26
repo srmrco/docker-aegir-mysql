@@ -1,8 +1,5 @@
 #!/bin/bash
 # needed variables:
-# POSTFIX_DOMAIN
-# POSTFIX_MAILNAME
-# POSTFIX_DESTINATION
 # AEGIR_SITE
 # AEGIR_EMAIL
 # AEGIR_DB_PASSWORD
@@ -60,12 +57,7 @@ else
 	       FLUSH PRIVILEGES;"
 	echo "$GRANT" | mysql -u root -h localhost -p$MYSQL_ROOT_PW
 
-	debconf-set-selections /tmp/dpkg_selection.conf
-	# set installation parameters to prevent the installation script from asking
-	echo "postfix postfix/relayhost string $POSTFIX_DOMAIN" | debconf-set-selections
-	echo "postfix postfix/mailname string $POSTFIX_MAILNAME" | debconf-set-selections
-	echo "postfix postfix/destinations string $POSTFIX_DESTINATION, localhost.localdomain, localhost" | debconf-set-selections
-	apt-get -y install postfix
+	apt-get -y install ssmtp
 
 	adduser --system --group --home /var/aegir aegir
 	adduser aegir www-data    #make aegir a user of group www-data

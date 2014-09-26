@@ -23,8 +23,6 @@ RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a
 RUN add-apt-repository 'deb http://ftp.nluug.nl/db/mariadb/repo/10.0/ubuntu trusty main'
 RUN apt-get update
 
-ADD dpkg_selection.conf /tmp/dpkg_selection.conf
-
 RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-server supervisor apache2 php5 php5-cli php5-gd php5-mysql php-pear sudo rsync git-core unzip mariadb-server
 
 # allow access from any IP
