@@ -71,7 +71,7 @@ else
 
 	a2enmod rewrite
 
-	ln -s /var/aegir/config/apache.conf /etc/apache2/conf.d/aegir.conf
+	ln -s /var/aegir/config/apache.conf /etc/apache2/conf-enabled/aegir.conf
 
 	echo -e "Defaults:aegir  !requiretty\naegir ALL=NOPASSWD: /usr/sbin/apache2ctl" >> /etc/sudoers.d/aegir
 	chmod 0440 /etc/sudoers.d/aegir
