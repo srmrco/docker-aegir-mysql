@@ -5,8 +5,9 @@
 # AEGIR_DB_PASSWORD
 # AEGIR_VERSION
 #
+
+
 echo "Install mysql:"
-#!/bin/bash
 
 MYSQL="/usr/bin/mysqld_safe"
 MYSQL_ADMIN="/usr/bin/mysqladmin"
