@@ -25,6 +25,10 @@ RUN apt-get update
 
 RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-server supervisor apache2 php5 php5-cli php5-gd php5-mysql php-pear sudo rsync git-core unzip mariadb-server
 
+# Set a suid bit on sudo, somehow this base image has it disabled.
+# Required to let Aegir reload apache.
+RUN chmod u+s /usr/bin/sudo
+
 # allow access from any IP
 RUN sed -i '/^bind-address*/ s/127.0.0.1/0.0.0.0/' /etc/mysql/my.cnf
 RUN mkdir -p $DATADIR
