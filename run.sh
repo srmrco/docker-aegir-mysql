@@ -7,6 +7,9 @@
 #
 
 
+# Start ssh early to be able to login for debugging.
+service openssh-server start
+
 echo "Install mysql:"
 
 MYSQL="/usr/bin/mysqld_safe"
