@@ -14,7 +14,11 @@ Services provided:
 
 First checkout this branch. Then go to the directory and build the docker image.
 
-docker build -t namespace/aegir_maria .
+1. Add your ssh public key to the authorized_keys file.
+2. Customize config options from docker_run.sh into a new file called config-include.sh.
+3. build the docker container.
+
+```docker build -t namespace/aegir_maria .```
 
 After the successful build we can run a container instance. We are sharing multiple volumes with our host system.
 
@@ -35,6 +39,13 @@ The full run command in scripted in docker_run.sh
 
 The database passwords can be changed by adding a file called config-include.sh, which includes the updated config lines from docker_run.sh.
 
+
+### Debugging
+
+```docker run  -ti namespace/aegir_maria:latest /bin/bash```
+
+This export command can be used to manually initialize the environment:
+$ export AEGIR_SITE=aegir01 AEGIR_FRONTEND_URL=aegir01.mydomain.com AEGIR_EMAIL=aegir01@mydomain.com AEGIR_DB_PASSWORD=CHANGEME AEGIR_VERSION=7.x-3.x MYSQL_ROOT_PW=CHANGEME SOLR_PASS=CHANGEME SOLR_VERSION=4.6.0
 
 ### Solr search
 
