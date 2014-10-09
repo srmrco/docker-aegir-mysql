@@ -17,7 +17,7 @@ if [ -f config-include.sh ]; then
 fi
 
 docker run \
-  -d \
+  --detach=true \
   -v /var/docker/aegir01/usr/share/solr4:/usr/share/solr4 \
   -v /var/docker/aegir01/var/aegir:/var/aegir \
   -v /var/docker/aegir01/var/log/apache2:/var/log/apache2 \
