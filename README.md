@@ -11,17 +11,17 @@ Services provided:
 
 ## How to use
 
-1. First checkout this repository. Go to the checked out repositpory and build the docker image:
+- First checkout this repository. Go to the checked out repositpory and build the docker image:
 
 ```bash
 $ docker build -t namespace/aegir .
 ```
 
-2. Customize config options from `docker_run.sh` into a new file called `config-include.sh`. 
+- Customize config options from `docker_run.sh` into a new file called `config-include.sh`. 
   - Pay attention at MOUNT_POINT variable - it specifies where Docker should put shared volumes, by default it will be `/var/docker`. 
   - Also make sure to put the correct value into variables: IMAGE_NAME and INSTANCE_NAME - these names you will be using when interacting with your Aegir container in future.
 
-3. Create and run new container using:
+- Create and run new container using:
 
 ```bash
 $ ./docker_run.sh
