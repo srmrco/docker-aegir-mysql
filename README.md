@@ -30,7 +30,7 @@ $ ./docker_run.sh
 If the container is executed successfully, it will configre and install Aegir and then execute all needed services under Supervisor. You can see what's happenning in the container in realtime using `docker logs -f aegir`.
 
 
-## Using container
+## Login
 
 ```bash
 $ docker run -ti namespace/aegir bash
